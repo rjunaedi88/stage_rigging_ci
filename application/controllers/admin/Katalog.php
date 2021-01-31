@@ -87,8 +87,6 @@ class Katalog extends CI_Controller{
 			$this->form_validation->set_rules('userfile', 'Foto', 'required');
 		}
 
-		var_dump($this->form_validation->run());exit();
-
 		if ($this->form_validation->run() != true){
 			$data['pheader'] = 'Edit Katalog';
 			$this->load->view('template_admin/header', $data);

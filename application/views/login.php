@@ -1,6 +1,6 @@
-<body class="bg-gradient-primary">
+<body class="bg-gradient-primary mt-5">
 
-  <div class="container">
+  <div class="container" style="margin-bottom:55px">
 
     <!-- Outer Row -->
     <div class="row justify-content-center">
@@ -26,7 +26,7 @@
                       <input type="password" class="form-control form-control-user" name="password" placeholder="Password" value="<?php echo set_value('password') ?>">
                       <small class="text-danger"><?php echo form_error('password') ?></small>
                     </div>
-                    <button class="btn btn-primary btn-user btn-block" type="submit">Login</button>
+                    <button class="btn btn-user btn-block" style="color:#fff;background: rgb(92, 159, 36);" type="submit">Login</button>
                   </form>
                   
                   <hr>

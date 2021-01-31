@@ -30,15 +30,17 @@ class Status extends CI_Controller {
 		$tanggal_kembali = strtotime($invoice->tanggal_kembali);
 		$interval = $tanggal_kembali - $tanggal_pesan;
 		$hari = floor($interval / (60*60*24));
+		$harga = $invoice->harga;
+		$total_harga = $harga * $hari;
 
 		// menghitung harga
-		$tipe_pembayaran = $invoice->tipe_pembayaran;
-		$harga = $invoice->harga;
-		if($tipe_pembayaran == "dp"){
-			$total_harga = $harga * 0.2 * $hari;
-		} else {
-			$total_harga = $harga * $hari;
-		}
+		// $tipe_pembayaran = $invoice->tipe_pembayaran;
+		// $harga = $invoice->harga;
+		// if($tipe_pembayaran == "dp"){
+		// 	$total_harga = $harga * 0.2 * $hari;
+		// } else {
+		// 	$total_harga = $harga * $hari;
+		// }
 
 		$data['title'] = 'Status Pemesanan';
 		$data['invoice'] = $invoice;

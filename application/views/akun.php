@@ -1,4 +1,4 @@
-<div class="container mt-5">
+<div class="container" style="margin-top:100px;margin-bottom:70px">
     <div class="card">
       <h5 class="card-header">Data Diri</h5>
       <div class="card-body">
@@ -35,7 +35,7 @@
 
         		</table>
 
-        		<?php echo anchor('beranda','<div class="btn btn-sm btn-danger">Kembali</div>') ?>
+        		<?php echo anchor('beranda','<div class="btn btn-sm" style="color:#fff;background: rgb(92, 159, 36);">Kembali</div>') ?>
         	</div>
         </div>	
       </div>

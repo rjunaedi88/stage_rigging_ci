@@ -1,4 +1,4 @@
-  <section class="section">
+  <section class="section" style="margin-top:50px">
     <div class="container">
       <div class="section-title">
         <h3>Pembayaran</h3>
@@ -41,7 +41,7 @@
       Jika sudah melakukan pembayaran, kirimkan bukti pembayaran melalui whatapps ke nomer 082222222222
       Maka tim survey kami akan menghubungi anda</p>
 
-    <a href="<?php echo base_url('beranda') ?>" class="btn btn-sm btn-primary">Kembali ke menu awal</a>
-    <a href="<?php echo base_url('status') ?>" class="btn btn-sm btn-success">Cek status pemesanan</a>
+    <a href="<?php echo base_url('beranda') ?>" class="btn btn-sm btn-primary">Kembali ke home</a>
+    <a href="<?php echo base_url('status') ?>" class="btn btn-sm" style="color:#fff;background: rgb(92, 159, 36);">Cek status pemesanan</a>
     </div>
 </section>

@@ -1,7 +1,7 @@
 
 <body class="bg-gradient-primary">
 
-  <div class="container">
+  <div class="container" style="margin-top:100px">
 
     <div class="card o-hidden border-0 shadow-lg my-5 col-lg-7 mx-auto">
       <div class="card-body p-0">
@@ -72,7 +72,7 @@
                 
                 <div class="form-group">
                   <div class="col-sm-offset-4 col-sm-10">
-                    <button type="submit" class="btn btn-primary"><i class="fa fa-check"></i> Buat Akun</button>
+                    <button type="submit" class="btn" style="color:#fff;background: rgb(92, 159, 36);"><i class="fa fa-check"></i> Buat Akun</button>
                   </div>
                 </div>
               </form>
@@ -85,3 +85,4 @@
         </div>
       </div>
     </div>
+  </div>

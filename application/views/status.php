@@ -1,8 +1,8 @@
-  <section class="section">
+  <section class="section" style="margin-top:50px">
     <div class="container">
       <div class="section-title">
         <h3>Status Pemesanan</h3>
-        <button type="button" class="btn btn-primary"><?php echo $invoice->status_pembayaran ?></button>
+        <button type="button" class="btn" style="color:#fff;background: rgb(92, 159, 36);"><?php echo $invoice->status_pembayaran ?></button>
       </div>
       <div>
         <p>Nama Customer : <?php echo $invoice->nama_customer ?> <br>
@@ -38,9 +38,11 @@
       	</table>
       </div>
       <?php if($invoice->status_pembayaran == "menunggu pembayaran"){ ?>
-      <p>* Silahkan anda membayar melalui rekening bank kami di BCA 1790078221 a/n CV Tunggal Ringging <br>
-      Jika sudah melakukan pembayaran, kirimkan bukti pembayaran melalui whatapps ke nomer 082222222222
-      Maka tim survey kami akan menghubungi anda</p>
+      <p>** Silahkan anda membayar melalui rekening bank kami di BCA 1790078221 a/n CV Tunggal Ringging <br>
+      Jika sudah melakukan pembayaran, kirimkan bukti pembayaran melalui whatapps ke nomer <a href="https://api.whatsapp.com/send?phone=6289652858789&text=Hallo%20Admin">089652858789</a>
+      Maka tim survey kami akan menghubungi anda.</p>
+      <a href="https://api.whatsapp.com/send?phone=6289652858789&text=Hallo%20Admin"><img src="<?php echo base_url() ?>assets_user/img/wa_icon.png" width="50px"></a>
+      
       <?php } elseif($invoice->status_pembayaran == "lunas") { ?>
       <p>Pembayaran sudah lunas</p>
       <?php } ?>
