@@ -1,5 +1,5 @@
 <div class="container">
-	<h2>Katalog Produk</h2>
+	<h2>Data Customer</h2>
 
   <?php
     if($this->session->flashdata('alert')){

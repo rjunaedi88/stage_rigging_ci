@@ -36,6 +36,8 @@
         		</table>
 
         		<?php echo anchor('beranda','<div class="btn btn-sm" style="color:#fff;background: rgb(92, 159, 36);">Kembali</div>') ?>
+                <?php echo anchor('akun/edit_akun/'.$akun->id_customer,'<div class="btn btn-sm btn-info">Edit Profil</div>') ?>
+                
         	</div>
         </div>	
       </div>

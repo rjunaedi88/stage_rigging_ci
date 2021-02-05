@@ -46,4 +46,11 @@ class Model_customer extends CI_Model {
 		$this->db->order_by('id_customer', 'desc');
 		return $this->db->get('tb_customer');
 	}
+
+	public function edit($id, $data)
+	{
+		// var_dump($id);exit();
+		$this->db->where('id_customer', $id);
+		return $this->db->update('tb_customer', $data);
+	}
 }

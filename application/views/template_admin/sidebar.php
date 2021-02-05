@@ -52,6 +52,18 @@
           <i class="fas fa-fw fa-table"></i>
           <span>Data Pemesanan</span></a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+          <i class="fas fa-fw fa-chart-area"></i>
+          <span>Laporan</span>
+        </a>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item" href="<?php echo base_url('admin/laporan_pesanan') ?>">Laporan Pemesanan</a>
+            <a class="collapse-item" href="<?php echo base_url('admin/laporan_pesanan/cetak_laporan_customer') ?>">Laporan Customer</a>
+          </div>
+        </div>
+      </li>
       <?php }elseif($this->session->userdata('a_global')->role_admin == 'owner'){ ?>
       <li class="nav-item">
         <a class="nav-link" href="<?= base_url('admin/pengguna') ?>">

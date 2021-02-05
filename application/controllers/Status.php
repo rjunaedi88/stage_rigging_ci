@@ -16,6 +16,7 @@ class Status extends CI_Controller {
 					</div>');
 			redirect('login');
 		}
+
 	}
 
 	
@@ -25,6 +26,10 @@ class Status extends CI_Controller {
 		$id_cust = $akun->id_customer;
 		$id = $this->Model_pemesanan->get_data_by_id_status($id_cust)->row_object();
 		$invoice = $this->Model_pemesanan->get_data_by_id($id->id_pesanan)->row_object();
+		if(!$invoice){
+			$this->session->set_flashdata('alert', '<div class="alert alert-danger">Maaf, Anda belum melakukan pemesanan, Silahkan pesan katalog dibawah!<span class="close" data-dismiss="alert">&times;</span></div>');
+			redirect('katalog');
+		}
 		
 		$tanggal_pesan = strtotime($invoice->tanggal_pesan);
 		$tanggal_kembali = strtotime($invoice->tanggal_kembali);

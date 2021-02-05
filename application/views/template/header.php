@@ -60,7 +60,7 @@
               <ul>
                 <li><a href="<?php echo base_url('akun') ?>">Data Diri</a></li>
                 <li><a href="<?php echo base_url('status') ?>">Status Pemesanan</a></li>
-                <li><a href="<?php echo base_url('login/keluar') ?>">Keluar</a></li>
+                <li><a href="<?php echo base_url('login/keluar') ?>" onclick="return confirm('Yakin ingin keluar web ?')">Keluar</a></li>
               </ul>
             </li>
           <?php } else { ?>
