@@ -8,7 +8,8 @@
         <p>Nama Customer : <?php echo $invoice->nama_customer ?> <br>
         Alamat : <?php echo $invoice->alamat ?> <br>
         No Telpon : <?php echo $invoice->telepon ?> <br>
-        Email : <?php echo $invoice->email ?></p>
+        Email : <?php echo $invoice->email ?> <br>
+        Tanggal Pemesanan : <?php echo $invoice->tanggal_pesan ?> s/d <?php echo $invoice->tanggal_kembali ?></p></p>
       </div>
 
       <div class="table-responsive">
@@ -45,6 +46,7 @@
       
       <?php } elseif($invoice->status_pembayaran == "lunas") { ?>
       <p>Pembayaran sudah lunas</p>
+      <a href="<?php echo base_url('status/cetak_laporan_pemesanan') ?>" class="btn btn-sm btn-info">Cetak Laporan Pemesanan</a>
       <?php } ?>
     </div>
 </section>

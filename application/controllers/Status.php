@@ -56,4 +56,33 @@ class Status extends CI_Controller {
 		$this->load->view('template/footer');
 		
 	}
+
+	public function cetak_laporan_pemesanan()
+	{
+		$akun = $this->Model_customer->getDataById($this->session->userdata('c_id'))->row_object();
+		$id_cust = $akun->id_customer;
+		$id = $this->Model_pemesanan->get_data_by_id_status($id_cust)->row_object();
+		$invoice = $this->Model_pemesanan->get_data_by_id($id->id_pesanan)->row_object();
+		
+		$tanggal_pesan = strtotime($invoice->tanggal_pesan);
+		$tanggal_kembali = strtotime($invoice->tanggal_kembali);
+		$interval = $tanggal_kembali - $tanggal_pesan;
+		$hari = floor($interval / (60*60*24));
+		$harga = $invoice->harga;
+		$total_harga = $harga * $hari;
+
+		$data['title'] = 'Cetak Status Pemesanan';
+		$data['invoice'] = $invoice;
+		$data['hari'] = $hari;
+		$data['total_harga'] = $total_harga;
+		$this->load->view('cetak_status_pesanan', $data);
+
+
+		// $cust = $this->Model_customer->cetak_laporan_customer()->result_array();
+		//var_dump($cust);exit();
+		// $data['customer'] = $cust;
+		// $data['pheader'] = 'Laporan Customer Stage Rigging';
+		// $data['content'] = 'admin/laporan/cetak_laporan_customer';
+		// $this->load->view('admin/laporan/cetak_laporan_customer', $data);
+	}
 }

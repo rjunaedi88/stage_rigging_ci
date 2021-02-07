@@ -1,6 +1,4 @@
 
-<body class="bg-gradient-primary">
-
   <div class="container">
 
     <div class="card o-hidden border-0 shadow-lg my-5 col-lg-7 mx-auto">
@@ -83,3 +81,4 @@
         </div>
       </div>
     </div>
+  </div>
