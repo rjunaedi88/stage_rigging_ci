@@ -1,5 +1,5 @@
 <div class="container">
-	<h2>Edit Data Katalog</h2>
+	<h2>Edit Data Pemesanan</h2>
 	<div class="row">
 		<div class="col-12">
 		<?php foreach ($pemesanan as $pms) : ?>
@@ -22,13 +22,13 @@
 			        	</div>
 
 			        	<div class="form-group">
-			        		<label>Tanggal Sewa</label>
-			        		<input type="text" name="tanggal_pesan" class="form-control" value="<?php echo $pms->tanggal_pesan ?>" readonly>
+			        		<label>Tanggal Pemakaian</label>
+			        		<input type="text" name="tanggal_pemakaian" class="form-control" value="<?php echo $pms->tanggal_pemakaian ?>" readonly>
 			        	</div>
 
 			        	<div class="form-group">
-			        		<label>Tanggal Selesai sewa</label>
-			        		<input type="text" name="tanggal_kembali" class="form-control" value="<?php echo $pms->tanggal_kembali ?>" readonly>
+			        		<label>Tanggal Selesai</label>
+			        		<input type="text" name="tanggal_selesai" class="form-control" value="<?php echo $pms->tanggal_selesai ?>" readonly>
 			        	</div>
 					</div>
 					<div class="col-5">
@@ -50,9 +50,7 @@
 
 			        	<div class="form-group">
 			        		<label>Gambar</label>
-			        		<img src="<?php echo base_url('uploads/'.$pms->bukti_pembayaran) ?>" width="100" class="thumbnail">
-			        		<input type="file" class="form-control" name="userfile">
-			        		<small class="text-danger"><?php echo form_error('userfile') ?></small>
+			        		<a href="<?php echo base_url('uploads/'.$pms->bukti_pembayaran) ?>"><img src="<?php echo base_url('uploads/'.$pms->bukti_pembayaran) ?>" width="100" class="thumbnail"></a>
 			        	</div>
 					</div>
 				</div>

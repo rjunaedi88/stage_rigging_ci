@@ -19,8 +19,8 @@
   <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
 <script type="text/javascript">
   var today = new Date().toISOString().split('T')[0];
-  document.getElementsByName("tanggal_pesan")[0].setAttribute('min', today);
-  document.getElementsByName("tanggal_kembali")[0].setAttribute('min', today);
+  document.getElementsByName("tanggal_pemakaian")[0].setAttribute('min', today);
+  document.getElementsByName("tanggal_selesai")[0].setAttribute('min', today);
 </script>
   <!-- Vendor JS Files -->
   <script src="<?php echo base_url() ?>assets/vendor/jquery/jquery.min.js"></script>

@@ -31,9 +31,9 @@ class Status extends CI_Controller {
 			redirect('katalog');
 		}
 		
-		$tanggal_pesan = strtotime($invoice->tanggal_pesan);
-		$tanggal_kembali = strtotime($invoice->tanggal_kembali);
-		$interval = $tanggal_kembali - $tanggal_pesan;
+		$tanggal_pemakaian = strtotime($invoice->tanggal_pemakaian);
+		$tanggal_selesai = strtotime($invoice->tanggal_selesai);
+		$interval = $tanggal_selesai - $tanggal_pemakaian;
 		$hari = floor($interval / (60*60*24));
 		$harga = $invoice->harga;
 		$total_harga = $harga * $hari;
@@ -64,9 +64,9 @@ class Status extends CI_Controller {
 		$id = $this->Model_pemesanan->get_data_by_id_status($id_cust)->row_object();
 		$invoice = $this->Model_pemesanan->get_data_by_id($id->id_pesanan)->row_object();
 		
-		$tanggal_pesan = strtotime($invoice->tanggal_pesan);
-		$tanggal_kembali = strtotime($invoice->tanggal_kembali);
-		$interval = $tanggal_kembali - $tanggal_pesan;
+		$tanggal_pemakaian = strtotime($invoice->tanggal_pemakaian);
+		$tanggal_selesai = strtotime($invoice->tanggal_selesai);
+		$interval = $tanggal_selesai - $tanggal_pemakaian;
 		$hari = floor($interval / (60*60*24));
 		$harga = $invoice->harga;
 		$total_harga = $harga * $hari;
@@ -84,5 +84,32 @@ class Status extends CI_Controller {
 		// $data['pheader'] = 'Laporan Customer Stage Rigging';
 		// $data['content'] = 'admin/laporan/cetak_laporan_customer';
 		// $this->load->view('admin/laporan/cetak_laporan_customer', $data);
+	}
+
+	public function upload_bukti($id)
+	{
+		// var_dump($id);exit();
+		$bukti_pembayaran	= $_FILES['bukti_pembayaran']['name'];
+		if ($bukti_pembayaran = '') {
+
+		} else {
+			$config['upload_path']   = './uploads'; // gambar nya mau di taro di direktori mana ?
+			$config['allowed_types'] = 'jpg|jpeg|png'; // gambar nya mau ekstensi apa aja ?
+			$this->load->library('upload', $config);
+			if (!$this->upload->do_upload('bukti_pembayaran')) {
+				echo "Gambar gagal diupload!";
+			} else {
+				$bukti_pembayaran = $this->upload->data('file_name');
+			}
+		}
+
+		$data = array (
+			'bukti_pembayaran'	=> $bukti_pembayaran,
+			'status_pembayaran'	=> 'Proses Check'
+		);
+		// var_dump($data);exit();
+
+		$this->Model_pemesanan->upload_bukti($id, $data);
+		redirect('status');
 	}
 }

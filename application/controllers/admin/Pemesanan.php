@@ -40,9 +40,9 @@ class Pemesanan extends CI_Controller {
 
 		$this->form_validation->set_rules('status_pembayaran', 'Status Pembayaran', 'trim|required');
 		//$this->form_validation->set_rules('bukti_pembayaran', 'Bukti Pembayaran', 'trim|required');
-		if(@$_FILES['userfile']['name'] == ''){
-			$this->form_validation->set_rules('userfile', 'Bukti Pembayaran', 'required');
-		}
+		// if(@$_FILES['userfile']['name'] == ''){
+		// 	$this->form_validation->set_rules('userfile', 'Bukti Pembayaran', 'required');
+		// }
 		//var_dump($this->form_validation->run());exit();
 
 		if($this->form_validation->run() != true) {
@@ -51,26 +51,25 @@ class Pemesanan extends CI_Controller {
 			$this->load->view('admin/pemesanan/edit', $data);
 			$this->load->view('template_admin/footer');
 		} else {
-			$config['upload_path']   = './uploads'; // gambar nya mau di taro di direktori mana ?
-			$config['allowed_types'] = 'jpg|jpeg|png'; // gambar nya mau ekstensi apa aja ?
-			$config['encrypt_name'] = true;
-			$this->load->library('upload', $config);
-			if (!$this->upload->do_upload()) {
-				$error = array('error' => $this->upload->display_errors());
-				$this->session->set_flashdata('alert', '<div class="alert alert-danger">Gagal upload</div>');
-						redirect('admin/pemesanan/edit');
-			}else {
-				$bukti = $this->upload->data();
+			// $config['upload_path']   = './uploads'; // gambar nya mau di taro di direktori mana ?
+			// $config['allowed_types'] = 'jpg|jpeg|png'; // gambar nya mau ekstensi apa aja ?
+			// $config['encrypt_name'] = true;
+			// $this->load->library('upload', $config);
+			// if (!$this->upload->do_upload()) {
+			// 	$error = array('error' => $this->upload->display_errors());
+			// 	$this->session->set_flashdata('alert', '<div class="alert alert-danger">Gagal upload</div>');
+			// 			redirect('admin/pemesanan/edit');
+			// }else {
+				// $bukti = $this->upload->data();
 				$array = array (
 						'id_pesanan'	=> $this->input->post('id_pesanan'),
-						'status_pembayaran'	=> $this->input->post('status_pembayaran'),
-						'bukti_pembayaran'	=> $bukti['file_name'],
+						'status_pembayaran'	=> $this->input->post('status_pembayaran')
 					);
 				//var_dump($bukti);exit();
 				$this->Model_pemesanan->update($id, $array);
 				$this->session->set_flashdata('alert', '<div class="alert alert-success"><b>Sukses</b>, data berhasil diedit.<span class="close" data-dismiss="alert">&times;</span></div>');
 				redirect('admin/pemesanan/index');
-			}
+			// }
 		}
 	}
 }

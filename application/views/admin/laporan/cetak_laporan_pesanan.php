@@ -15,7 +15,7 @@
 							<tr>
 								<td><?php echo $r + 1 ?></td>
 								<td><?php echo $v['id_pesanan'] ?></td>
-								<td><?php echo date('d/m/Y', strtotime($v['tanggal_pesan'])) ?></td>
+								<td><?php echo date('d/m/Y', strtotime($v['tanggal_pemakaian'])) ?></td>
 								<td><?php echo $v['nama_customer'] ?></td>
 								<td><?php echo $v['alamat_event'] ?></td>
 								<td><?php echo $v['status_pembayaran'] ?></td>

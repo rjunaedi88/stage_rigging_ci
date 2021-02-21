@@ -12,7 +12,7 @@
             <div class="contact-address">
               <i class="icofont-google-map"></i>
               <h3>Address</h3>
-              <address>Jl. Sultan Iskandar Muda No.2A Kby Lama,<br> Kota Jakarta Selatan</address>
+              <address>JJl. Pasir putih Rt 01 Rw 01 No 09<br>Kel. Pasir putih, Kec. Sawangan Kota Depok</address>
             </div>
           </div>
 
@@ -20,7 +20,7 @@
             <div class="contact-phone">
               <i class="icofont-phone"></i>
               <h3>Phone Number</h3>
-              <p>(021) 7294776</p>
+              <p>0813-1043-2037</p>
             </div>
           </div>
 

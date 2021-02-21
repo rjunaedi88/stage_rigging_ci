@@ -56,17 +56,17 @@
                 </div>
 
                 <div class="form-group row">
-                    <label for="tanggal_pesan" class="col-sm-4 control-label">Tanggal pesan</label>
+                    <label for="tanggal_pemakaian" class="col-sm-4 control-label">Tanggal pemakaian</label>
                     <div class="col-sm-8">
-                      <input type="date" class="input-small form-control" name="tanggal_pesan" value="<?php echo date('Y-m-d'); ?>">
-                      <small class="text-danger"><?php echo form_error('tanggal_pesan'); ?></small>
+                      <input type="date" class="input-small form-control" name="tanggal_pemakaian" value="<?php echo date('Y-m-d'); ?>">
+                      <small class="text-danger"><?php echo form_error('tanggal_pemakaian'); ?></small>
                     </div>
                 </div>
 
                 <div class="form-group row">
-                    <label for="tanggal_kembali" class="col-sm-4 control-label">Tanggal kembali</label>
+                    <label for="tanggal_selesai" class="col-sm-4 control-label">Tanggal selesai</label>
                     <div class="col-sm-8">
-                      <input type="date" class="input-small form-control" name="tanggal_kembali" value="<?php echo date('Y-m-d'); ?>">
+                      <input type="date" class="input-small form-control" name="tanggal_selesai" value="<?php echo date('Y-m-d'); ?>">
                     </div>
                 </div>
                 

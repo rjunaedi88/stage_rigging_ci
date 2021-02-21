@@ -11,8 +11,8 @@
 		<tr>
 			<th>No</th>
 			<th>Kode Pemesanan</th>
-			<th>Tanggal Awal</th>
-			<th>Tanggal Akhir</th>
+			<th>Tanggal Pemakaian</th>
+			<th>Tanggal Selesai</th>
       		<th>Nama Pemesan</th>
 			<th>Nama Katalog</th>
 			<th>Alamat Event</th>
@@ -28,8 +28,8 @@
 			foreach ($pemesanan as $pesanan) : ?>
 			<td><?php echo $no++ ?></td>
 			<td><?php echo $pesanan->id_pesanan ?></td>
-			<td><?php echo $pesanan->tanggal_pesan ?></td>
-			<td><?php echo $pesanan->tanggal_kembali ?></td>
+			<td><?php echo $pesanan->tanggal_pemakaian ?></td>
+			<td><?php echo $pesanan->tanggal_selesai ?></td>
 			<td><?php echo $pesanan->nama_customer ?></td>
 			<td><?php echo $pesanan->nama_katalog ?></td>
 			<td><?php echo $pesanan->alamat_event ?></td>

@@ -21,6 +21,8 @@ class Pemesanan extends CI_Controller{
 	{
 		$katalog = $this->Model_katalog->get_data_by_id($id)->row_object();
 		$customer = $this->Model_customer->getDataById($this->session->userdata('c_id'))->row_object();
+		// $tanggal_pemesanan = date("d-m-Y");
+		// var_dump($tanggal_pemesanan);exit();
 
 		$nama_katalog = $katalog->nama_katalog;
 		$deskripsi = $katalog->deskripsi;
@@ -34,8 +36,8 @@ class Pemesanan extends CI_Controller{
 			redirect (base_url());
 		}
 
-		$this->form_validation->set_rules('tanggal_pesan', 'Tanggal Pemesanan', 'trim|required|is_unique[tb_pemesanan.tanggal_pesan]', ['is_unique' => 'Pemesanan di tanggal ini sudah penuh']);
-		$this->form_validation->set_rules('tanggal_kembali', 'Tanggal Pengembalian', 'trim|required');
+		$this->form_validation->set_rules('tanggal_pemakaian', 'Tanggal Pemesanan', 'trim|required|is_unique[tb_pemesanan.tanggal_pemakaian]', ['is_unique' => 'Pemesanan di tanggal ini sudah penuh']);
+		$this->form_validation->set_rules('tanggal_selesai', 'Tanggal Pengembalian', 'trim|required');
 		//$this->form_validation->set_rules('tipe_pembayaran', 'Tipe Pembayaran', 'trim|required');
 		$this->form_validation->set_rules('alamat_event', 'Alamat Event', 'trim|required');
 
@@ -49,9 +51,9 @@ class Pemesanan extends CI_Controller{
 			$this->load->view('template/footer', $data);
 		} else {
 			$id = $this->Model_pemesanan->generate_id();
-			$tanggal_pesan = strtotime($this->input->post('tanggal_pesan'));
-			$tanggal_kembali = strtotime($this->input->post('tanggal_kembali'));
-			$interval = $tanggal_kembali - $tanggal_pesan;
+			$tanggal_pemakaian = strtotime($this->input->post('tanggal_pemakaian'));
+			$tanggal_selesai = strtotime($this->input->post('tanggal_selesai'));
+			$interval = $tanggal_selesai - $tanggal_pemakaian;
 			$hari = floor($interval / (60*60*24));
 			$total_harga = $harga * $hari;
 
@@ -70,13 +72,14 @@ class Pemesanan extends CI_Controller{
 					'id_customer'		=> $this->session->userdata('c_id'),
 					'wilayah'			=> $this->input->post('wilayah'),
 					'alamat_event'		=> $this->input->post('alamat_event'),
-					'tanggal_pesan'		=> $this->input->post('tanggal_pesan'),
-					'tanggal_kembali'	=> $this->input->post('tanggal_kembali'),
+					'tanggal_pemakaian'		=> $this->input->post('tanggal_pemakaian'),
+					'tanggal_selesai'	=> $this->input->post('tanggal_selesai'),
 					'total_harga'		=> $total_harga,
-					'bukti_pembayaran'	=> 'default-bukti.jpg'
+					'bukti_pembayaran'	=> 'default-bukti.jpg',
+					'tanggal_pemesanan'	=> date("Y-m-d")
 				);
 			$k = $array['wilayah'];
-			// var_dump($k);exit();
+			// var_dump($array);exit();
 			if($k == "non jabodetabek"){
 				$this->session->set_flashdata('alert', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
 					  Mohon maaf pemesanan hanya untuk wilayah jabodetabek
@@ -95,9 +98,9 @@ class Pemesanan extends CI_Controller{
 	{
 		$invoice = $this->Model_pemesanan->get_data_by_id($id)->row_object();
 		
-		$tanggal_pesan = strtotime($invoice->tanggal_pesan);
-		$tanggal_kembali = strtotime($invoice->tanggal_kembali);
-		$interval = $tanggal_kembali - $tanggal_pesan;
+		$tanggal_pemakaian = strtotime($invoice->tanggal_pemakaian);
+		$tanggal_selesai = strtotime($invoice->tanggal_selesai);
+		$interval = $tanggal_selesai - $tanggal_pemakaian;
 		$hari = floor($interval / (60*60*24));
 
 		// menghitung harga

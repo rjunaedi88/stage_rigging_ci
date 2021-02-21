@@ -26,7 +26,7 @@
                 Alamat : <?php echo $invoice->alamat ?> <br>
                 No Telpon : <?php echo $invoice->telepon ?> <br>
                 Email : <?php echo $invoice->email ?> <br>
-                Tanggal Pemesanan : <?php echo $invoice->tanggal_pesan ?> s/d <?php echo $invoice->tanggal_kembali ?></p>
+                Tanggal Pemesanan : <?php echo $invoice->tanggal_pemakaian ?> s/d <?php echo $invoice->tanggal_selesai ?></p>
               </div>
 
               <div class="table-responsive">

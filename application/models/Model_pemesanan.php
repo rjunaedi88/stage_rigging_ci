@@ -51,10 +51,20 @@ class Model_pemesanan extends CI_Model {
 	{
 		$this->db->order_by('id_pesanan', 'desc');
 		if($this->input->get('tgl1') != '' && $this->input->get('tgl2') != '') {
-			$this->db->where('tanggal_pesan >=', $this->input->get('tgl1'));
-			$this->db->where('tanggal_pesan <=', $this->input->get('tgl2'));
+			$this->db->where('tanggal_pemakaian >=', $this->input->get('tgl1'));
+			$this->db->where('tanggal_pemakaian <=', $this->input->get('tgl2'));
 		}
 		$this->db->join('tb_customer', 'tb_customer.id_customer = tb_pemesanan.id_customer', 'left');
 		return $this->db->get('tb_pemesanan');
+	}
+
+	public function upload_bukti($id, $data)
+	{
+		// var_dump($data);exit();
+		$this->db->set('bukti_pembayaran', $data['bukti_pembayaran']);
+		$this->db->set('status_pembayaran', $data['status_pembayaran']);
+		$this->db->where('id_pesanan', $id);
+		$this->db->update('tb_pemesanan');
+		return true;
 	}
 }
