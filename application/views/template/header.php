@@ -46,7 +46,7 @@
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
-      <h5 class="logo mr-auto"><a href="<?php echo base_url('Beranda') ?>" style="color:rgb(92, 159, 36);">Tunggal</a></h5>
+      <h5 class="logo mr-auto"><a href="<?php echo base_url('Beranda') ?>" style="color:rgb(92, 159, 36);">Tunggal Rigging</a></h5>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo mr-auto"><img src="assets_user/img/logo.png" alt="" class="img-fluid"></a>-->
 

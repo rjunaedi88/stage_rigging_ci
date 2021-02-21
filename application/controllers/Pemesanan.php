@@ -21,24 +21,20 @@ class Pemesanan extends CI_Controller{
 	{
 		$katalog = $this->Model_katalog->get_data_by_id($id)->row_object();
 		$customer = $this->Model_customer->getDataById($this->session->userdata('c_id'))->row_object();
-		// $tanggal_pemesanan = date("d-m-Y");
-		// var_dump($tanggal_pemesanan);exit();
-
+		
 		$nama_katalog = $katalog->nama_katalog;
 		$deskripsi = $katalog->deskripsi;
 		$harga = $katalog->harga;
 		$nama_customer = $customer->nama_customer;
 		$alamat	= $customer->alamat;
 		$telepon = $customer->telepon;
-		//var_dump($telepon);exit();
 
 		if(!$katalog){
 			redirect (base_url());
 		}
 
-		$this->form_validation->set_rules('tanggal_pemakaian', 'Tanggal Pemesanan', 'trim|required|is_unique[tb_pemesanan.tanggal_pemakaian]', ['is_unique' => 'Pemesanan di tanggal ini sudah penuh']);
+		// $this->form_validation->set_rules('tanggal_pemakaian', 'Tanggal Pemesanan', 'trim|required|is_unique[tb_pemesanan.tanggal_pemakaian]', ['is_unique' => 'Pemesanan di tanggal ini sudah penuh']);
 		$this->form_validation->set_rules('tanggal_selesai', 'Tanggal Pengembalian', 'trim|required');
-		//$this->form_validation->set_rules('tipe_pembayaran', 'Tipe Pembayaran', 'trim|required');
 		$this->form_validation->set_rules('alamat_event', 'Alamat Event', 'trim|required');
 
 		if ($this->form_validation->run() == false){
@@ -57,14 +53,6 @@ class Pemesanan extends CI_Controller{
 			$hari = floor($interval / (60*60*24));
 			$total_harga = $harga * $hari;
 
-			// menghitung harga
-			// $tipe_pembayaran = $this->input->post('tipe_pembayaran');
-			// if($tipe_pembayaran == "dp"){
-			// 	$total_harga = $harga * 0.2 * $hari;
-			// } else {
-			// 	$total_harga = $harga * $hari;
-			// }
-
 			$array = array(
 					'id_pesanan'		=> $id,
 					'status_pembayaran' => 'menunggu pembayaran',
@@ -78,17 +66,23 @@ class Pemesanan extends CI_Controller{
 					'bukti_pembayaran'	=> 'default-bukti.jpg',
 					'tanggal_pemesanan'	=> date("Y-m-d")
 				);
+			$cek = $this->db->get_where('tb_pemesanan', array('id_katalog' => $katalog->id_katalog, 'tanggal_pemakaian' => $this->input->post('tanggal_pemakaian')));
 			$k = $array['wilayah'];
-			// var_dump($array);exit();
 			if($k == "non jabodetabek"){
 				$this->session->set_flashdata('alert', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
 					  Mohon maaf pemesanan hanya untuk wilayah jabodetabek
 					</div>');
 				redirect(base_url().'pemesanan/index/' . $array['id_katalog']);
 			}else{
+				if($cek->num_rows() > 0){
+					$this->session->set_flashdata('alert', '<div class="alert alert-danger">Gagal, paket yang Anda pesan sudah full booking, Silahkan pilih katalog lain<span class="close" data-dismiss="alert">&times;</span></div>');
+					     redirect(base_url().'pemesanan/index/' . $array['id_katalog']);
+				}else {
 				$k = $this->Model_pemesanan->insert_data($array);
 				$this->session->set_flashdata('alert', '<div class="alert alert-success">Sukses, Pemesanan berhasil<span class="close" data-dismiss="alert">&times;</span></div>');
 				redirect(base_url().'pemesanan/invoice/'.$id);
+					
+				}
 			}
 			
 		}
